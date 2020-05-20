@@ -56,9 +56,8 @@ Model = keras.Sequential(
         layers.Conv2D(filters = 16 , kernel_size=(5, 5), activation="relu", padding = 'Valid'),
         layers.MaxPooling2D(pool_size=(2, 2), strides = 2),
         layers.Flatten(),
-        layers.Dense(25, activation="relu"),
+        layers.Dense(80, activation="relu"),
         layers.Dense(20, activation="relu"),
-        layers.Dense(10, activation="relu"),
         layers.Dense(10, activation="softmax"),
     ]
 )
