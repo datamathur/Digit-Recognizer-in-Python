@@ -1,7 +1,9 @@
 # Digit Recognizer in Python <br>
 One of the most exciting applications of Deep Neural Networks is character recognition. This repository contains the dataset and code file for a Digit recognizer model. <br>
 
-The basic concept used in developing this model is Convolutional Neural Networks(CNNs). CNN is a very efficient way of reducing the number of parameters while increasing the depth of Neural Networks. The file named 'code.py' conatins the model of a CNN which I developed for digit recognizer. The Model is inspired from the famous LeNet which was published in a paper in 1998 by Yann LeCun. The source code for the original paper is in the file 'LeCun.py'. <br> 
+The basic concept used in developing this model is Convolutional Neural Networks(CNNs). CNN is a very efficient way of reducing the number of parameters while increasing the depth of Neural Networks. The file named 'code.py' conatins the model of a CNN which I developed for digit recognizer. The Model is inspired from the famous LeNet which was published in a paper in 1998 by Yann LeCun. The source code for the original paper is in the file 'LeCun.py'. <br>
+
+The model that I made was able ot achieve 98.799% accuracy, which is similar to the accurary achieved by the model by Yann LeCun ,i.e., 98.866%. <br>
 
 ## Dataset <br>
 This dataset is a classic dataset of handwritten digits, released in 1999 by MNIST ("Modified National Institute of Standards and Technology"), which can be found on https://www.kaggle.com/c/digit-recognizer/overview .<br>  
