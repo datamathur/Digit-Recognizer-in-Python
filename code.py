@@ -50,10 +50,9 @@ Making and training CNN Model
 Model = keras.Sequential(
     [
         keras.Input(shape=(28, 28, 1)),
-        layers.Conv2D(filters = 4 , kernel_size=(3, 3), activation="relu", padding = 'Same'),
-        layers.Conv2D(filters = 8 , kernel_size=(3, 3), activation="relu", padding = 'Same'),
+        layers.Conv2D(filters = 16 , kernel_size=(5, 5), activation="relu", padding = 'Same'),
         layers.MaxPooling2D(pool_size=(2, 2), strides = 2),
-        layers.Conv2D(filters = 16 , kernel_size=(5, 5), activation="relu", padding = 'Valid'),
+        layers.Conv2D(filters = 32 , kernel_size=(5, 5), activation="relu", padding = 'Valid'),
         layers.MaxPooling2D(pool_size=(2, 2), strides = 2),
         layers.Flatten(),
         layers.Dense(80, activation="relu"),
@@ -64,7 +63,7 @@ Model = keras.Sequential(
 
 #Training the Model
 batch_size = 128
-epochs = 20
+epochs = 15
 
 Model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 Model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
