@@ -13,18 +13,13 @@ from keras.optimizers import Adam
 """
 Importing Data and Data Preprocessing
 """
-train_data = pd.read_csv('train.csv')
 test = pd.read_csv('test.csv')
 
 #Spliting the data to train and dev sets
-train, dev =  train_test_split(train_data, train_size = 0.92858)
+(x_train, y_train), (x_dev, y_dev) = keras.datasets.mnist.load_data()
 
-y_train = train["label"]
-x_train = train.drop(labels = ["label"],axis = 1)
-
-y_dev = dev["label"]
-x_dev = dev.drop(labels = ["label"],axis = 1)
-
+x_train = np.expand_dims(x_train, -1)
+x_dev = np.expand_dims(x_dev, -1)
 x_test = test.values
 
 #Normalizing the data 
@@ -33,8 +28,8 @@ x_dev = x_dev / 255.0
 x_test = test / 255.0
 
 #Reshaping the data 
-x_train = x_train.values.reshape(-1,28,28,1)
-x_dev = x_dev.values.reshape(-1,28,28,1)
+x_train = x_train.reshape(-1,28,28,1)
+x_dev = x_dev.reshape(-1,28,28,1)
 x_test = test.values.reshape(-1,28,28,1)
 
 #Encoding the Labels
@@ -64,8 +59,13 @@ Model = keras.Sequential(
 #Training the Model
 batch_size = 128
 epochs = 15
+lr_schedule = keras.optimizers.schedules.ExponentialDecay(
+    initial_learning_rate=0.01,
+    decay_steps=1000,
+    decay_rate=0.9)
+optimizer = keras.optimizers.Adam(learning_rate=lr_schedule)
 
-Model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
+Model.compile(loss="categorical_crossentropy", optimizer=optimizer, metrics=["accuracy"])
 Model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
 
 #Testing the Model
